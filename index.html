@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de FFE - Simplifica tus prácticas FP</title>
+    <link rel="icon" type="image/png" href="favico.png">
 
     <!-- Meta tags SEO -->
     <meta name="description"
@@ -307,6 +308,7 @@
             letter-spacing: -1.5px;
             background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary-light) 70%, var(--secondary) 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -845,6 +847,7 @@
             line-height: 1.15;
             background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary-light) 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -939,6 +942,184 @@
                 font-size: 2.2rem;
             }
         }
+
+        /* ==========================================
+           11. MODAL DE DESCARGA DE EJECUTABLES
+           ========================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 8, 15, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 580px;
+            box-shadow: var(--shadow-premium), var(--shadow-glow);
+            transform: scale(0.9);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.8rem 2rem 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-close {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-close:hover {
+            background: var(--bg-glass-active);
+            transform: scale(1.05);
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .modal-body {
+            padding: 1.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.4rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition-smooth);
+        }
+
+        html[data-theme="light"] .download-option {
+            background: rgba(0, 0, 0, 0.01);
+        }
+
+        .download-option:hover {
+            background: var(--bg-glass-active);
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .option-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .option-icon {
+            font-size: 1.8rem;
+            width: 46px;
+            height: 46px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .download-option:hover .option-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .option-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .option-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            font-family: var(--font-body);
+        }
+
+        .option-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        .option-badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+        }
     </style>
 </head>
 
@@ -981,7 +1162,7 @@
                 complicaciones. Aplicación válida para windows, mac y linux.
             </p>
             <div class="hero-btns">
-                <a href="../app/index.html" class="btn btn-primary btn-lg" id="hero-btn-primary">
+                <a href="#" class="btn btn-primary btn-lg" id="hero-btn-primary">
                     <span>Descargar Aplicación</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1292,7 +1473,7 @@
             <p>Accede directamente al panel central de la aplicación y olvídate de las plantillas de Excel estáticas y
                 desorganizadas.</p>
             <div class="cta-btns">
-                <a href="../app/index.html" class="btn btn-primary btn-lg" id="cta-btn-primary">
+                <a href="#" class="btn btn-primary btn-lg" id="cta-btn-primary">
                     <span>Descargar Aplicación</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1308,6 +1489,62 @@
     <footer>
         © 2026 Álvaro Urbano Lima.
     </footer>
+
+    <!-- Modal de Descarga de Ejecutables -->
+    <div class="modal-overlay" id="download-modal" onclick="closeDownloadModal()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Descargar FFE Alumnos</h3>
+                <button class="modal-close" onclick="closeDownloadModal()" aria-label="Cerrar modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle" id="download-modal-subtitle">Selecciona la versión correspondiente a tu
+                    sistema operativo:</p>
+
+                <!-- Windows Setup -->
+                <a href="#" class="download-option" id="dl-win-setup">
+                    <div class="option-left">
+                        <span class="option-icon">🪟</span>
+                        <div class="option-info">
+                            <span class="option-title">Windows Installer (Recomendado)</span>
+                            <span class="option-desc" id="lbl-win-setup">Cargando...</span>
+                        </div>
+                    </div>
+                    <div class="option-right">
+                        <span class="option-badge">EXE</span>
+                    </div>
+                </a>
+
+                <!-- macOS DMG -->
+                <a href="#" class="download-option" id="dl-mac-dmg">
+                    <div class="option-left">
+                        <span class="option-icon">🍎</span>
+                        <div class="option-info">
+                            <span class="option-title">macOS Installer</span>
+                            <span class="option-desc" id="lbl-mac-dmg">Cargando...</span>
+                        </div>
+                    </div>
+                    <div class="option-right">
+                        <span class="option-badge">DMG</span>
+                    </div>
+                </a>
+
+                <!-- Linux AppImage -->
+                <a href="#" class="download-option" id="dl-linux-appimage">
+                    <div class="option-left">
+                        <span class="option-icon">🐧</span>
+                        <div class="option-info">
+                            <span class="option-title">Linux AppImage (Portable)</span>
+                            <span class="option-desc" id="lbl-linux-appimage">Cargando...</span>
+                        </div>
+                    </div>
+                    <div class="option-right">
+                        <span class="option-badge">AppImage</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Overlay zoom de capturas -->
     <div class="zoom-overlay" id="image-zoom-overlay" onclick="closeZoom()">
@@ -1375,12 +1612,91 @@
             document.body.style.overflow = 'auto'; // Habilitar scroll
         }
 
+        /* ==========================================
+           4. VISOR / MODAL DE DESCARGAS
+           ========================================== */
+        const downloadModal = document.getElementById('download-modal');
+
+        function openDownloadModal(e) {
+            if (e) e.preventDefault();
+            downloadModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDownloadModal() {
+            downloadModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('hero-btn-primary').addEventListener('click', openDownloadModal);
+        document.getElementById('cta-btn-primary').addEventListener('click', openDownloadModal);
+
         // Cerrar también con tecla Esc
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeZoom();
+                closeDownloadModal();
             }
         });
+
+        /* ==========================================
+           5. CONFIGURACIÓN DINÁMICA DE ENLACES DE DESCARGA
+           ========================================== */
+        const APP_VERSION = '0.1.0';
+        const REPO_URL = 'https://aurbanolima.github.io/practicas';
+
+        // Elementos de los enlaces
+        const dlWinSetup = document.getElementById('dl-win-setup');
+        const dlMacDmg = document.getElementById('dl-mac-dmg');
+        const dlLinuxAppimage = document.getElementById('dl-linux-appimage');
+
+        // Textos descriptivos (para mostrar el nombre real del archivo en el modal)
+        const lblWinSetup = document.getElementById('lbl-win-setup');
+        const lblMacDmg = document.getElementById('lbl-mac-dmg');
+        const lblLinuxAppimage = document.getElementById('lbl-linux-appimage');
+        const modalSubtitle = document.getElementById('download-modal-subtitle');
+
+        // Nombres de archivos con la versión dinámica
+        const fnWinSetup = `ffe-alumnos_${APP_VERSION}_x64-setup.exe`;
+        const fnMacDmg = `ffe-alumnos_${APP_VERSION}_x64.dmg`;
+        const fnLinuxAppimage = `ffe-alumnos_${APP_VERSION}_amd64.AppImage`;
+
+        // Asignar nombres en la UI
+        lblWinSetup.textContent = fnWinSetup;
+        lblMacDmg.textContent = fnMacDmg;
+        lblLinuxAppimage.textContent = fnLinuxAppimage;
+        modalSubtitle.textContent = `Selecciona la versión correspondiente a tu sistema operativo (Versión v${APP_VERSION}):`;
+
+        // Asignar URLs de descarga
+        dlWinSetup.href = `${REPO_URL}/download/${fnWinSetup}`;
+        dlMacDmg.href = `${REPO_URL}/download/${fnMacDmg}`;
+        dlLinuxAppimage.href = `${REPO_URL}/download/${fnLinuxAppimage}`;
+
+        // Detectar OS y destacar la opción recomendada
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isWindows = /windows/i.test(userAgent);
+        const isMac = /macintosh|mac os x/i.test(userAgent);
+        const isLinux = /linux/i.test(userAgent) && !/android/i.test(userAgent);
+
+        if (isWindows) {
+            highlightOption(dlWinSetup, 'Recomendado');
+        } else if (isMac) {
+            highlightOption(dlMacDmg, 'Recomendado');
+        } else if (isLinux) {
+            highlightOption(dlLinuxAppimage, 'Recomendado');
+        }
+
+        function highlightOption(element, badgeText) {
+            element.style.borderColor = 'var(--primary-light)';
+            element.style.background = 'rgba(99, 102, 241, 0.08)';
+            const badge = element.querySelector('.option-badge');
+            if (badge) {
+                badge.textContent = badgeText;
+                badge.style.background = 'var(--primary)';
+                badge.style.color = '#ffffff';
+                badge.style.boxShadow = '0 0 10px rgba(99, 102, 241, 0.3)';
+            }
+        }
     </script>
 </body>
 

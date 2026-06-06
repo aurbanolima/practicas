@@ -1642,9 +1642,6 @@
         /* ==========================================
            5. CONFIGURACIÓN DINÁMICA DE ENLACES DE DESCARGA
            ========================================== */
-        const APP_VERSION = '0.1.0';
-        const REPO_URL = 'https://aurbanolima.github.io/practicas';
-
         // Elementos de los enlaces
         const dlWinSetup = document.getElementById('dl-win-setup');
         const dlMacDmg = document.getElementById('dl-mac-dmg');
@@ -1657,20 +1654,20 @@
         const modalSubtitle = document.getElementById('download-modal-subtitle');
 
         // Nombres de archivos con la versión dinámica
-        const fnWinSetup = `ffe-alumnos_${APP_VERSION}_x64-setup.exe`;
-        const fnMacDmg = `ffe-alumnos_${APP_VERSION}_x64.dmg`;
-        const fnLinuxAppimage = `ffe-alumnos_${APP_VERSION}_amd64.AppImage`;
+        const fnWinSetup = `ffe-alumnos_0.1.0_x64-setup.exe`;
+        const fnMacDmg = `ffe-alumnos_0.1.0_aarch64.dmg`;
+        const fnLinuxAppimage = `ffe-alumnos_0.1.0_amd64.AppImage`;
 
         // Asignar nombres en la UI
         lblWinSetup.textContent = fnWinSetup;
         lblMacDmg.textContent = fnMacDmg;
         lblLinuxAppimage.textContent = fnLinuxAppimage;
-        modalSubtitle.textContent = `Selecciona la versión correspondiente a tu sistema operativo (Versión v${APP_VERSION}):`;
+        modalSubtitle.textContent = `Selecciona la versión correspondiente a tu sistema operativo:`;
 
         // Asignar URLs de descarga
-        dlWinSetup.href = `${REPO_URL}/download/${fnWinSetup}`;
-        dlMacDmg.href = `${REPO_URL}/download/${fnMacDmg}`;
-        dlLinuxAppimage.href = `${REPO_URL}/download/${fnLinuxAppimage}`;
+        dlWinSetup.href = `https://aurbanolima.github.io/ffe/download/${fnWinSetup}`;
+        dlMacDmg.href = `https://aurbanolima.github.io/ffe/download/${fnMacDmg}`;
+        dlLinuxAppimage.href = `https://aurbanolima.github.io/ffe/download/${fnLinuxAppimage}`;
 
         // Detectar OS y destacar la opción recomendada
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
